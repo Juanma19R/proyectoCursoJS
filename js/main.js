@@ -1,5 +1,4 @@
-//PROGRAMA
-
+//Saludo a user
 let nombre = prompt("Ingrese su nombre:"); //Se pide el nombre del usuario para dar una saludo.
 
 function saludo(nombre) { //Se crea una funcion con el nombre pedido en la variable "nombre"
@@ -9,6 +8,7 @@ function saludo(nombre) { //Se crea una funcion con el nombre pedido en la varia
 
 let saludoFinal = saludo(nombre);
 alert(saludoFinal); //Finalmente se ejecuta el saludo en un alert
+//PROGRAMA
 
 class Streaming { 
     constructor(titulo, genero, tipo) {
@@ -16,26 +16,29 @@ class Streaming {
         this.genero = genero;
         this.tipo = tipo;
     }
-    mostrarInfo() { //Luego de obtener los datos "titulo,genero y tipo" se imprime una alerta mostrando la información
-        alert(`${this.titulo} es del genero ${this.genero} y es un/una ${this.tipo}`);
-    }
 }
 
-const arrayStream = [];
-let pregunta = prompt("¿Desea ver algo? (si/no)"); //Se crea un array con la información pedida si la respuesta es "si"
+let boton = document.getElementById("buscar");
+boton.addEventListener("click", cargarBusqueda);
 
-while (pregunta === "si") {
-    let titulo = prompt("¿Que quieres ver hoy?"); 
-    let genero = prompt("¿A que genero pertenece?");
-    let tipo = prompt("¿Es una serie, un documental o una pelicula?");
-    const busquedaStreaming = new Streaming(titulo, genero, tipo);
-    busquedaStreaming.mostrarInfo();
-    arrayStream.push(busquedaStreaming);
-    console.log(arrayStream);
-    pregunta = prompt("¿desea ver otra cosa? (si/no)");
-    document.write(`Elegiste ver ${busquedaStreaming.titulo}`);
+function cargarBusqueda() { //Capturamos el elemento
+    let titulo = document.getElementById("titulo").value;
+    let genero = document.getElementById("genero").value;
+    let tipo = document.getElementById("tipo").value;
+    let busqueda1 = new Streaming(titulo, genero, tipo);
+    console.log(busqueda1);
+    mostrarBusqueda(busqueda1);
 }
 
+function mostrarBusqueda(busqueda) { //Mostramos el elemento
+    let formulario = document.getElementById("principal");
+    formulario.innerHTML = "";
+    let nuevaBusqueda = document.createElement("div"); //Agregamos otro elemento para mostrarlo en el documento
+    nuevaBusqueda.className = "info-busqueda";
+    nuevaBusqueda.innerHTML = `Decidiste ver ${busqueda.titulo}, del genero ${busqueda.genero}.`;
+
+    formulario.appendChild(nuevaBusqueda);
+}
 //NAVBAR
 
 //Se toma el header del index y se guarda en una variable, luego se crea el elemento nav y se guarda en otra variable
