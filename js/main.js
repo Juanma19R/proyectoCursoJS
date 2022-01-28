@@ -1,44 +1,58 @@
-//Saludo a user
-let nombre = prompt("Ingrese su nombre:"); //Se pide el nombre del usuario para dar una saludo.
+//SIMULADOR
+const busquedaForm = document.getElementById("busquedaForm"); //Se guarda el formulario en una variable
 
-function saludo(nombre) { //Se crea una funcion con el nombre pedido en la variable "nombre"
-    let saludoUser = "Bienvenid@ " + nombre;
-    return saludoUser;
-}
+busquedaForm.addEventListener("submit", function(event) { //Boton para ejecutar la busqueda y cargar al historial lo buscado
+    event.preventDefault()
+    let busquedaFormData = new FormData(busquedaForm);
+    let busquedaObj = convertirFormDataABusquedaObj(busquedaFormData);
+    guardarBusquedaData(busquedaObj);
+    insertarColumnaEnHistorial(busquedaObj);
+    busquedaForm.reset();
+});
 
-let saludoFinal = saludo(nombre);
-alert(saludoFinal); //Finalmente se ejecuta el saludo en un alert
-//PROGRAMA
+document.addEventListener("DOMContentLoaded", function(event) { //Cuando el DOM se cargue, se ejecuta la funcion de traer la info del local storage
+    let busquedaObjArray = JSON.parse(localStorage.getItem("busquedaData"));
+    busquedaObjArray.forEach(
+        function(arrayElement) {
+            insertarColumnaEnHistorial(arrayElement);
+        }
+    )
+})
 
-class Streaming { 
-    constructor(titulo, genero, tipo) {
-        this.titulo = titulo;
-        this.genero = genero;
-        this.tipo = tipo;
+function convertirFormDataABusquedaObj(busquedaFormData) { //Funcion para convertir el FormData a un objeto 
+    let contenidoTitulo = busquedaFormData.get("contenidoTitulo");
+    let contenidoGenero = busquedaFormData.get("contenidoGenero");
+    let contenidoTipo = busquedaFormData.get("contenidoTipo");
+    return {
+        "contenidoTitulo": contenidoTitulo,
+        "contenidoGenero": contenidoGenero,
+        "contenidoTipo": contenidoTipo
     }
 }
 
-let boton = document.getElementById("buscar");
-boton.addEventListener("click", cargarBusqueda);
+function insertarColumnaEnHistorial(busquedaObj) { //Funcion para agregar las celdas a la tabla del historial
+    let tablaRef = document.getElementById("historialTabla");
+    
+    let nuevaColumna = tablaRef.insertRow(-1);
 
-function cargarBusqueda() { //Capturamos el elemento
-    let titulo = document.getElementById("titulo").value;
-    let genero = document.getElementById("genero").value;
-    let tipo = document.getElementById("tipo").value;
-    let busqueda1 = new Streaming(titulo, genero, tipo);
-    console.log(busqueda1);
-    mostrarBusqueda(busqueda1);
+    let nuevaCelda = nuevaColumna.insertCell(0);
+    nuevaCelda.textContent = busquedaObj["contenidoTitulo"];
+
+    nuevaCelda = nuevaColumna.insertCell(1);
+    nuevaCelda.textContent = busquedaObj["contenidoGenero"];
+
+    nuevaCelda = nuevaColumna.insertCell(2);
+    nuevaCelda.textContent = busquedaObj["contenidoTipo"];
 }
 
-function mostrarBusqueda(busqueda) { //Mostramos el elemento
-    let formulario = document.getElementById("principal");
-    formulario.innerHTML = "";
-    let nuevaBusqueda = document.createElement("div"); //Agregamos otro elemento para mostrarlo en el documento
-    nuevaBusqueda.className = "info-busqueda";
-    nuevaBusqueda.innerHTML = `Decidiste ver ${busqueda.titulo}, del genero ${busqueda.genero}.`;
-
-    formulario.appendChild(nuevaBusqueda);
+function guardarBusquedaData(busquedaObj) { 
+    let busquedaArray = JSON.parse(localStorage.getItem("busquedaData")) || []; //Si hay contenido en el local storege lo tomo y si no, lo empiezo en un array vacio
+    busquedaArray.push(busquedaObj);
+    //Convierto mi array a JSON y lo guardo en el local storage
+    let busquedaArrayJson = JSON.stringify(busquedaArray);
+    localStorage.setItem("busquedaData", busquedaArrayJson);
 }
+
 //NAVBAR
 
 //Se toma el header del index y se guarda en una variable, luego se crea el elemento nav y se guarda en otra variable
@@ -48,12 +62,9 @@ let navBar = document.createElement("nav");
 navBar.classList.add("navbar", "navbar-expand-lg", "navbar-light", "bg-light"); //Se agregan las clases de bootstrap para el navBar
 navBar.innerHTML = 
 `<div class="container-fluid">
-    <a class="navbar-brand">
-        <img src="./img/tv.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    <a class="navbar-brand" href="../index.html">
+        <img src="./img/home.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
         Streaming House
     </a>
 </div>`;
 header.appendChild(navBar); //A la variable "header" se le agrega el elemento que esta guardado en "navBar"
-
-let title = document.getElementById("title"); //Se toma el div con un ID y se agrega una etiqueta h1 para agregar un titulo
-title.innerHTML = `<h1>¡Bienvenid@ a Streaming House ${nombre}!</h1>`;

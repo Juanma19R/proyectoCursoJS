@@ -20,25 +20,46 @@
 <body>
     <!--Nav-->
     <header id="menuNav"></header>
-    <div id="title" class="title"></div>
 
-    <!--Seccion Busqueda-->
-    <section class="principal" id="principal"> 
-        <h2 class="subtitulo">¿Que deseas ver hoy?</h2>
-        <div class="contact-card">
-            <div class="form">
-                <div class="column-1">
-                    <label class="formulario" for="name">Titulo</label>
-                    <label class="formulario" for="mail">Genero</label>
-                    <label class="formulario" for="mail">Tipo</label>
-                </div>
-                <div class="column-2">
-                    <input class="field" type="text" name="titulo" id="titulo" placeholder="Star Wars, Los Simpsons...">
-                    <input class="field" type="text" name="genero" id="genero" placeholder="Terror, Drama...">
-                    <input class="field" type="text" name="tipo" id="tipo" placeholder="Serie, Pelicula...">
-                    <button class="buton" id="buscar">Buscar</button>
-                </div>
+    <!--Seccion Formulario-->
+    <section>
+        <div class="card container">
+            <div class="card-body">
+                <h1 class="titulo">¿Que deseás ver hoy?</h1>
+                <form id="busquedaForm">
+                    <div class="formField">
+                        <label for="contenidoTitulo">Titulo: </label>
+                        <input id="contenidoTitulo" name="contenidoTitulo" placeholder="Star Wars, Los Simpsons...">
+                    </div>
+                    <div class="formField">
+                        <label for="contenidoGenero">Genero: </label>
+                        <input id="contenidoGenero" name="contenidoGenero" placeholder="Ciencia Ficción, Humor...">
+                    </div>
+                    <div class="formField">
+                        <label for="contenidoTipo">Tipo: </label>
+                        <input id="contenidoTipo" name="contenidoTipo" placeholder="Película, Serie...">
+                    </div>
+                    <div class="formField">
+                        <button id="botonBuscar">Buscar</button>
+                    </div>
+                </form>
             </div>
+        </div>
+    </section>
+
+    <!--Seccion historial-->
+    <section>
+        <div class="container historialTabla">
+            <h2 class="subtitulo">Tu historial de búsquedas</h2>
+            <table class="table" id="historialTabla">
+                <thead>
+                    <tr>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Genero</th>
+                        <th scope="col">Tipo</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </section>
 
