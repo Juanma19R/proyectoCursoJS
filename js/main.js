@@ -1,45 +1,47 @@
 //SIMULADOR
-let contenidoDisponible = [ //Array de objetos con el contenido disponible
+const contenidoDisponible = [ //Array de objetos con el contenido disponible
     {
-        nombre: "No mires arriba",
+        titulo: "No mires arriba",
         genero: "Ciencia ficción, Drama",
         tipo: "Película",
         imagen: "./img/no-mires-arriba.jpg",
     },
     {
-        nombre: "El marginal 4",
+        titulo: "El marginal 4",
         genero: "Drama, Acción, Crimenes",
         tipo: "Serie",
         imagen: "./img/el-marginal-4.jpg",
     },
     {
-        nombre: "Neymar: El caos perfecto",
+        titulo: "Neymar: El caos perfecto",
         genero: "Documentales biográficos",
         tipo: "Documental",
         imagen: "./img/neymar-el-caos-perfecto.jpg",
     },
 ];
 
-const contenedor = document.getElementById("container");
-contenedor.innerHTML = "";
-
-contenidoDisponible.forEach((disponible) => { //Se muestra en pantalla el array de objetos de contenidos disponibles mediante cards
-    let card = document.createElement("div");
-    card.classList.add("card", "col-sm-12", "col-lg-3", "container");
-    let html = `
-    <img src="${disponible.imagen}" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title">${disponible.nombre}</h5>
-        <p class="card-text">${disponible.genero} | ${disponible.tipo}</p>
-        <a href="" class="btn btn-secondary">Ver</a>
-    </div>`;
-    card.innerHTML = html;
-    contenedor.appendChild(card);
+$(document).ready(function () { //Boton para ir a ver el contenido
+    $(".btnVer").click(function (event) {
+        event.preventDefault()
+        console.log("Boton funcionando correctamente.") 
+    });
 });
+
+for (const contenido of contenidoDisponible) { //Se muestran en pantalla los contenidos del array declarados, mediante cards
+    $("#seccionContenidos").append(`
+    <div class="card col-sm-12 col-lg-3 container">
+        <img src="${contenido.imagen}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">${contenido.titulo}</h5>
+            <p class="card-text">${contenido.genero} | ${contenido.tipo}</p>
+            <a href="" class="btn btn-secondary btnVer">Ver</a>
+        </div>
+    </div>`);
+}
 
 const busquedaForm = document.getElementById("busquedaForm"); //Se guarda el formulario en una variable
 
-busquedaForm.addEventListener("submit", function(event) { //Boton para ejecutar la busqueda y cargar al historial lo buscado
+$(busquedaForm).submit (function(event) { //Boton para ejecutar la busqueda y cargar al historial lo buscado
     event.preventDefault()
     let busquedaFormData = new FormData(busquedaForm);
     let busquedaObj = convertirFormDataABusquedaObj(busquedaFormData);
@@ -56,8 +58,8 @@ function guardarBusquedaData(busquedaObj) {
     localStorage.setItem("busquedaData", busquedaArrayJson);
 }
 
-document.addEventListener("DOMContentLoaded", function(event) { //Cuando el DOM se cargue, se ejecuta la funcion de traer la info del local storage
-    let busquedaObjArray = JSON.parse(localStorage.getItem("busquedaData"));
+$(document).ready(function(event) { //Cuando el DOM se cargue, se ejecuta la funcion de traer la info del local storage y si no, lo empiezo en un array vacio
+    let busquedaObjArray = JSON.parse(localStorage.getItem("busquedaData")) || [];
     busquedaObjArray.forEach(
         function(arrayElement) {
             insertarColumnaEnHistorial(arrayElement)
@@ -89,14 +91,6 @@ function insertarColumnaEnHistorial(busquedaObj) { //Funcion para agregar las ce
 
     nuevaCelda = nuevaColumna.insertCell(2);
     nuevaCelda.textContent = busquedaObj["contenidoTipo"];
-}
-
-class DatosUsuario {
-    constructor(nombre, telefono, email) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.email = email;
-    }
 }
 
 //NAVBAR
