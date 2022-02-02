@@ -21,47 +21,54 @@
     <!--Nav-->
     <header id="menuNav"></header>
 
-    <!--Seccion Formulario-->
-    <section>
-        <div class="card container">
-            <div class="card-body">
-                <h1 class="titulo">¿Que deseás ver hoy?</h1>
-                <form id="busquedaForm">
-                    <div class="formField">
-                        <label for="contenidoTitulo">Titulo: </label>
-                        <input id="contenidoTitulo" name="contenidoTitulo" placeholder="Star Wars, Los Simpsons...">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1 col-md-12"> <!--Seccion contenidos-->
+                <h2 class="contenido-disponible">Nuestro contenido disponible</h2>
+                <div id="container" class="row container"></div>
+            </div>
+
+            <div class="col-md-6"> <!--Seccion Formulario-->
+                <div class="card container">
+                    <div class="card-body">
+                        <h2 class="tituloBusqueda">Busqueda avanzada: ¿Que deseás ver hoy?</h2>
+                        <form id="busquedaForm">
+                            <div class="formField">
+                                <label for="contenidoTitulo">Titulo: </label>
+                                <input id="contenidoTitulo" name="contenidoTitulo" placeholder="Star Wars, Los Simpsons...">
+                            </div>
+                            <div class="formField">
+                                <label for="contenidoGenero">Genero: </label>
+                                <input id="contenidoGenero" name="contenidoGenero" placeholder="Ciencia Ficción, Humor...">
+                            </div>
+                            <div class="formField">
+                                <label for="contenidoTipo">Tipo: </label>
+                                <input id="contenidoTipo" name="contenidoTipo" placeholder="Película, Serie...">
+                            </div>
+                            <div class="formField">
+                                <button id="botonBuscar">Buscar</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="formField">
-                        <label for="contenidoGenero">Genero: </label>
-                        <input id="contenidoGenero" name="contenidoGenero" placeholder="Ciencia Ficción, Humor...">
-                    </div>
-                    <div class="formField">
-                        <label for="contenidoTipo">Tipo: </label>
-                        <input id="contenidoTipo" name="contenidoTipo" placeholder="Película, Serie...">
-                    </div>
-                    <div class="formField">
-                        <button id="botonBuscar">Buscar</button>
-                    </div>
-                </form>
+                </div>
+            </div>
+
+            <div class="col-md-6"> <!--Seccion historial-->
+                <div class="container historialTabla">
+                    <h2 class="subtitulo">Tu historial de búsquedas</h2>
+                    <table class="table" id="historialTabla">
+                        <thead>
+                            <tr>
+                                <th scope="col">Titulo</th>
+                                <th scope="col">Genero</th>
+                                <th scope="col">Tipo</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!--Seccion historial-->
-    <section>
-        <div class="container historialTabla">
-            <h2 class="subtitulo">Tu historial de búsquedas</h2>
-            <table class="table" id="historialTabla">
-                <thead>
-                    <tr>
-                        <th scope="col">Titulo</th>
-                        <th scope="col">Genero</th>
-                        <th scope="col">Tipo</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-    </section>
+    </div>
 
     <!--Bootstrap & Popper-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

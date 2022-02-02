@@ -1,4 +1,42 @@
 //SIMULADOR
+let contenidoDisponible = [ //Array de objetos con el contenido disponible
+    {
+        nombre: "No mires arriba",
+        genero: "Ciencia ficción, Drama",
+        tipo: "Película",
+        imagen: "./img/no-mires-arriba.jpg",
+    },
+    {
+        nombre: "El marginal 4",
+        genero: "Drama, Acción, Crimenes",
+        tipo: "Serie",
+        imagen: "./img/el-marginal-4.jpg",
+    },
+    {
+        nombre: "Neymar: El caos perfecto",
+        genero: "Documentales biográficos",
+        tipo: "Documental",
+        imagen: "./img/neymar-el-caos-perfecto.jpg",
+    },
+];
+
+const contenedor = document.getElementById("container");
+contenedor.innerHTML = "";
+
+contenidoDisponible.forEach((disponible) => { //Se muestra en pantalla el array de objetos de contenidos disponibles mediante cards
+    let card = document.createElement("div");
+    card.classList.add("card", "col-sm-12", "col-lg-3", "container");
+    let html = `
+    <img src="${disponible.imagen}" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">${disponible.nombre}</h5>
+        <p class="card-text">${disponible.genero} | ${disponible.tipo}</p>
+        <a href="" class="btn btn-secondary">Ver</a>
+    </div>`;
+    card.innerHTML = html;
+    contenedor.appendChild(card);
+});
+
 const busquedaForm = document.getElementById("busquedaForm"); //Se guarda el formulario en una variable
 
 busquedaForm.addEventListener("submit", function(event) { //Boton para ejecutar la busqueda y cargar al historial lo buscado
@@ -10,14 +48,22 @@ busquedaForm.addEventListener("submit", function(event) { //Boton para ejecutar 
     busquedaForm.reset();
 });
 
+function guardarBusquedaData(busquedaObj) { 
+    let busquedaArray = JSON.parse(localStorage.getItem("busquedaData")) || []; //Si hay contenido en el local storege lo tomo y si no, lo empiezo en un array vacio
+    busquedaArray.push(busquedaObj);
+    //Convierto mi array a JSON y lo guardo en el local storage
+    let busquedaArrayJson = JSON.stringify(busquedaArray);
+    localStorage.setItem("busquedaData", busquedaArrayJson);
+}
+
 document.addEventListener("DOMContentLoaded", function(event) { //Cuando el DOM se cargue, se ejecuta la funcion de traer la info del local storage
     let busquedaObjArray = JSON.parse(localStorage.getItem("busquedaData"));
     busquedaObjArray.forEach(
         function(arrayElement) {
-            insertarColumnaEnHistorial(arrayElement);
+            insertarColumnaEnHistorial(arrayElement)
         }
     )
-})
+});
 
 function convertirFormDataABusquedaObj(busquedaFormData) { //Funcion para convertir el FormData a un objeto 
     let contenidoTitulo = busquedaFormData.get("contenidoTitulo");
@@ -45,12 +91,12 @@ function insertarColumnaEnHistorial(busquedaObj) { //Funcion para agregar las ce
     nuevaCelda.textContent = busquedaObj["contenidoTipo"];
 }
 
-function guardarBusquedaData(busquedaObj) { 
-    let busquedaArray = JSON.parse(localStorage.getItem("busquedaData")) || []; //Si hay contenido en el local storege lo tomo y si no, lo empiezo en un array vacio
-    busquedaArray.push(busquedaObj);
-    //Convierto mi array a JSON y lo guardo en el local storage
-    let busquedaArrayJson = JSON.stringify(busquedaArray);
-    localStorage.setItem("busquedaData", busquedaArrayJson);
+class DatosUsuario {
+    constructor(nombre, telefono, email) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.email = email;
+    }
 }
 
 //NAVBAR

@@ -2,14 +2,36 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-.card{
-    margin-top: 30px;
-}
-.titulo{
+/*Contenido disponible*/
+.contenido-disponible{
     text-align: center;
-    font-size: 1.5rem;
-    color: grey;
     margin-top: 40px;
+    color: grey;
+}
+#container{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-left: auto;
+}
+.car-img {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+}
+
+/*Formulario*/
+.card{
+    margin-bottom: 40px;
+}
+.tituloBusqueda{
+    text-align: center;
+    font-size: 1.2rem;
+    color: grey;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 .formField{
@@ -19,10 +41,15 @@ body{
 #botonBuscar{
     font-size: 20px;
 }
+
+/*Tabla historial*/
 .subtitulo{
     text-align: center;
     font-size: 1.5rem;
     color: grey;
     margin-top: 60px;
     padding-bottom: 15px;
+}
+.historialTabla{
+    margin-bottom: 40px;
 }
