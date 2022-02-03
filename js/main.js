@@ -37,6 +37,15 @@ for (const contenido of contenidoDisponible) { //Se muestran en pantalla los con
             <a href="" class="btn btn-secondary btnVer">Ver</a>
         </div>
     </div>`);
+    $("h5").animate({ opacity:'0.5'},
+                    "slow",            
+                    function(){ 
+                        $("h5").animate({ opacity:'1'},
+                        "fast",);
+                    });
+    $("a").fadeOut("slow", function() {
+        $("a").fadeIn(1000);
+    });
 }
 
 const busquedaForm = document.getElementById("busquedaForm"); //Se guarda el formulario en una variable
