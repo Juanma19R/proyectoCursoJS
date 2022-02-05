@@ -30,7 +30,7 @@ $(document).ready(function () { //Boton para ir a ver el contenido
 for (const contenido of contenidoDisponible) { //Se muestran en pantalla los contenidos del array declarados, mediante cards
     $("#seccionContenidos").append(`
     <div class="card col-sm-12 col-lg-3 container">
-        <img src="${contenido.imagen}" class="card-img-top">
+        <img src="${contenido.imagen}" class="card-img-top card-img">
         <div class="card-body">
             <h5 class="card-title">${contenido.titulo}</h5>
             <p class="card-text">${contenido.genero} | ${contenido.tipo}</p>
@@ -109,11 +109,11 @@ let header = document.getElementById("menuNav");
 let navBar = document.createElement("nav");
 
 navBar.classList.add("navbar", "navbar-expand-lg", "navbar-light", "bg-light"); //Se agregan las clases de bootstrap para el navBar
-navBar.innerHTML = 
-`<div class="container-fluid">
+navBar.innerHTML = `
+<div class="container-fluid">
     <a class="navbar-brand" href="../index.html">
-        <img src="./img/home.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        Streaming House
+        <img src="./img/home.svg" alt="" width="30" height="24" class="d-inline-block align-text-top"> Streaming House
     </a>
 </div>`;
+
 header.appendChild(navBar); //A la variable "header" se le agrega el elemento que esta guardado en "navBar"

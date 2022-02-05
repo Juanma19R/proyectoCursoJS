@@ -7,7 +7,7 @@
     <!--Favicon-->
     <link rel="shortcut icon" href="./img/favicon.svg">
     <!--CSS-->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/estilos.css">
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
             <div class="col-md-6"> <!--Seccion Formulario-->
                 <div class="card container">
                     <div class="card-body">
-                        <h2 class="tituloBusqueda">Busqueda avanzada: ¿Que deseás ver hoy?</h2>
+                        <h2 class="tituloBusqueda">Anotador: ¿Que deseás ver?</h2>
                         <form id="busquedaForm">
                             <div class="formField">
                                 <label for="contenidoTitulo">Titulo: </label>
@@ -45,7 +45,7 @@
                                 <input id="contenidoTipo" name="contenidoTipo" placeholder="Película, Serie...">
                             </div>
                             <div class="formField">
-                                <button id="botonBuscar">Buscar</button>
+                                <button class="btn btn-outline-secondary btnGuardar" id="botonGuardar">Guardar</button>
                             </div>
                         </form>
                     </div>
@@ -54,7 +54,7 @@
 
             <div class="col-md-6"> <!--Seccion historial-->
                 <div class="container historialTabla">
-                    <h2 class="subtitulo">Tu historial de búsquedas</h2>
+                    <h2 class="subtituloTabla">Lista de contenido para ver luego</h2>
                     <table class="table" id="historialTabla">
                         <thead>
                             <tr>
