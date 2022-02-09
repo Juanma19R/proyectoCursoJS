@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;700&display=swap");
+/*Default*/
+* {
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #FFF;
+  margin: 0; }
+
+/*Navbar*/
+header {
+  margin-bottom: 40px; }
+  header .navbar {
+    background-color: #E8F0F2; }
+  header .home {
+    font-size: 1.6rem; }
+    header .home img {
+      padding-right: 5px; }
+  header .search {
+    padding: 0.5rem 1rem;
+    font-size: 1.6rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-end; }
+    header .search:focus {
+      outline: 0; }
+  header .nav-link {
+    font-size: 1.6rem;
+    padding-left: 10px; }
+
+/*SECCION INDEX*/
+/*seccion bienvenida*/
+.welcome-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px; }
+  .welcome-section h2 {
+    font-size: 2.3rem;
+    color: #053742;
+    text-align: center; }
+  .welcome-section img {
+    max-width: 500px;
+    max-height: 500px; }
+
+.btnPlay {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px; }
+  .btnPlay a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #A2DBFA;
+    font-size: 1.7rem; }
+
+/*Formulario*/
+.cardForm {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1); }
+  .cardForm .titleSearch {
+    text-align: center;
+    font-size: 2.3rem;
+    color: #053742;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  .cardForm .formField {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 20px; }
+    .cardForm .formField input {
+      border-radius: 10px; }
+  .cardForm .btnSave {
+    background-color: #A2DBFA;
+    color: #fff;
+    font-size: 1.7rem;
+    border-radius: 10px; }
+
+/*Tabla historial*/
+.listTable {
+  margin-bottom: 40px; }
+  .listTable .subtitleTable {
+    text-align: center;
+    font-size: 2.3rem;
+    color: #053742;
+    margin-top: 60px;
+    padding-bottom: 15px; }
+  .listTable .table {
+    font-size: 1.6rem;
+    text-align: center; }
+
+/* SECCION CONTENIDOS */
+/*Contenido principal*/
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.6rem; }
+  main .movie {
+    width: 300px;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
+    background-color: #E8F0F2;
+    position: relative;
+    overflow: hidden; }
+    main .movie img {
+      width: 100%; }
+    main .movie .movie-info {
+      color: #053742;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem 1rem;
+      letter-spacing: 0.5px; }
+      main .movie .movie-info h3 {
+        margin-top: 0; }
+      main .movie .movie-info span {
+        background-color: #053742;
+        padding: 0.25rem 0.5rem;
+        border-radius: 3px;
+        font-weight: bold; }
+        main .movie .movie-info span.green {
+          color: lightgreen; }
+        main .movie .movie-info span.orange {
+          color: orange; }
+        main .movie .movie-info span.red {
+          color: red; }
+    main .movie .overview {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #E8F0F2;
+      padding: 1rem;
+      max-height: 100%;
+      transform: translateY(101%);
+      transition: transform 0.3s ease-in; }
+    main .movie:hover .overview {
+      transform: translateY(0); }
+    main .movie .know-more {
+      background-color: #053742;
+      color: #fff;
+      font-size: 15px;
+      font-weight: bold;
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin-top: 5px; }
+
+/*Filtros de busqueda*/
+#tags {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  font-size: 1.7rem; }
+  #tags .tag {
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #A2DBFA;
+    border-radius: 10px;
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer; }
+    #tags .tag.highlight {
+      background-color: #053742; }
+  #tags .no-results {
+    color: #053742; }
+
+/*Paginador*/
+.pagination {
+  display: flex;
+  margin: 10px 30px;
+  align-items: center;
+  justify-content: center;
+  color: #053742; }
+  .pagination .page {
+    font-size: 1.6rem;
+    padding: 20px;
+    cursor: pointer; }
+  .pagination.disabled {
+    cursor: not-allowed;
+    color: #053742; }
+  .pagination .current {
+    padding: 10px 20px;
+    border-radius: 50%;
+    border: 5px solid #053742;
+    font-size: 20px;
+    font-weight: 600; }
+
+/*Overlay ingreso a peliculas*/
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.7s; }
+  .overlay .overlay-content {
+    position: relative;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px; }
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 40px;
+    color: #fff;
+    display: block;
+    transition: 0.3s; }
+    .overlay a:hover {
+      color: #A2DBFA; }
+    .overlay a:focus {
+      color: #A2DBFA; }
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px; }
+  @media screen and (max-height: 450px) {
+    .overlay .overlay a {
+      font-size: 20px; }
+    .overlay .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px; } }
+  .overlay .no-results {
+    color: #E8F0F2; }
+  .overlay .embed.hide {
+    display: none; }
+    .overlay .embed.hide.show {
+      display: inline-block; }
+  .overlay .arrow {
+    position: absolute;
+    font-size: 40px; }
+    .overlay .arrow.left-arrow {
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%); }
+    .overlay .arrow.right-arrow {
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5%; }

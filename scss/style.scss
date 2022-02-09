@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;700&display=swap');
+@import "variables";
+
+/*Default*/
+*{
+    box-sizing: border-box;
+} 
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FFF;
+    margin: 0;
+}
+
+/*Navbar*/
+header{
+    margin-bottom: 40px;
+    .navbar{
+        background-color: $secondary-color;
+    }
+    .home{
+        font-size: $paragraphs-size;
+        img{
+            padding-right: 5px;
+        }
+    }
+    .search{
+        padding: 0.5rem 1rem;
+        font-size: $paragraphs-size;
+        border-radius: 10px;
+        display: flex;
+        justify-content: flex-end;
+        &:focus{
+            outline: 0;
+        }
+    }
+    .nav-link{
+        font-size: $paragraphs-size;
+        padding-left: 10px;
+    }
+}
+
+/*SECCION INDEX*/
+/*seccion bienvenida*/
+.welcome-section{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    h2{
+        font-size: $subtitle-size;
+        color: $main-color;
+        text-align: center;
+    }
+    img{
+        max-width: 500px;
+        max-height: 500px;
+    }
+}
+.btnPlay{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    a{
+        text-decoration: none;
+        color: $letters-color-1;
+        background-color: $btn-color;
+        font-size: $btn-size;
+    }
+}
+
+/*Formulario*/
+.cardForm{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
+    .titleSearch{
+        text-align: center;
+        font-size: $subtitle-size;
+        color: $main-color;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .formField{
+        font-size: $paragraphs-size;
+        text-align: center;
+        margin-bottom: 20px;
+        input{
+            border-radius: 10px;
+        }
+    }
+    .btnSave{
+        background-color: $btn-color;
+        color: $letters-color-1;
+        font-size: $btn-size;
+        border-radius: 10px;
+    }
+}
+
+/*Tabla historial*/
+.listTable{
+    margin-bottom: 40px;
+    .subtitleTable{
+        text-align: center;
+        font-size: $subtitle-size;
+        color: $letters-color-2;
+        margin-top: 60px;
+        padding-bottom: 15px;
+    }
+    .table{
+        font-size: $paragraphs-size;
+        text-align: center;
+    }
+}
+
+/* SECCION CONTENIDOS */
+/*Contenido principal*/
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: $paragraphs-size;
+    .movie{
+        width: 300px;
+        margin: 1rem;
+        border-radius: 10px;
+        box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
+        background-color: $secondary-color;
+        position:relative;
+        overflow: hidden;
+        img{
+            width: 100%;
+        }
+        .movie-info{
+            color: $main-color;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem 1rem;
+            letter-spacing: 0.5px;
+            h3{
+                margin-top: 0;
+            }
+            span{
+                background-color: $main-color;
+                padding: 0.25rem 0.5rem;
+                border-radius: 3px;
+                font-weight: bold;
+                &.green{
+                    color:lightgreen;
+                }
+                &.orange{
+                    color:orange;
+                }
+                &.red{
+                    color:red;
+                }
+            }
+        }
+        .overview{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $secondary-color;
+            padding: 1rem;
+            max-height: 100%;
+            transform: translateY(101%);
+            transition:transform 0.3s ease-in;
+        }
+        &:hover .overview{
+            transform: translateY(0)
+        }
+        .know-more{
+            background-color: $main-color;
+            color: $letters-color-1;
+            font-size: 15px;
+            font-weight: bold;
+            border: 0;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin-top: 5px;
+        }
+    }
+}
+
+/*Filtros de busqueda*/
+#tags{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    font-size: $btn-size;
+    .tag{
+        color: $letters-color-1;
+        padding: 10px 20px;
+        background-color: $btn-color;
+        border-radius: 10px;
+        margin: 5px;
+        display: inline-block;
+        cursor: pointer;
+        &.highlight{
+            background-color: $main-color;
+        }
+    }  
+    .no-results{
+        color: $main-color;
+    }
+}
+
+/*Paginador*/
+.pagination{
+    display: flex;
+    margin: 10px 30px;
+    align-items: center;
+    justify-content: center;
+    color: $letters-color-2;
+    .page{
+        font-size: $paragraphs-size;
+        padding: 20px;
+        cursor: pointer;
+    }
+    &.disabled{
+        cursor: not-allowed;
+        color: $letters-color-2;
+    }
+    .current{
+        padding: 10px 20px;
+        border-radius: 50%;
+        border: 5px solid $main-color;
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+/*Overlay ingreso a peliculas*/
+.overlay{   
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.7s;
+    .overlay-content{
+        position: relative;
+        top: 10%;
+        width: 100%; 
+        text-align: center; 
+        margin-top: 30px; 
+    }
+    a{
+        padding: 8px;
+        text-decoration: none;
+        font-size: 40px;
+        color: $letters-color-1;
+        display: block; 
+        transition: 0.3s;
+        &:hover{
+            color: $btn-color;
+        }
+        &:focus{
+            color: $btn-color;
+        }
+    }
+    .closebtn{
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+    }
+    @media screen and (max-height: 450px){
+        .overlay a{font-size: 20px}
+        .overlay .closebtn{
+            font-size: 40px;
+            top: 15px;
+            right: 35px;
+        }
+    }
+    .no-results{
+        color: $secondary-color;
+    }
+    .embed.hide{
+        display: none;
+        &.show{
+            display: inline-block;
+        }
+    }
+    .arrow{
+        position: absolute;
+        font-size: 40px;
+        &.left-arrow{
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+        }
+        &.right-arrow{
+            top: 50%;
+            transform: translateY(-50%);
+            right: 5%;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
     <!--Favicon-->
     <link rel="shortcut icon" href="./img/favicon.svg">
     <!--CSS-->
-    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/style.css">
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,49 +18,69 @@
     <title>Streaming House | Web</title>
 </head>
 <body>
-    <!--Nav-->
-    <header id="menuNav"></header>
+    <!--Navbar-->
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand home" href="./index.html">
+                    <img src="./img/home.svg" alt="" width="30" height="24" class="d-inline-block align-text-top"> Home
+                </a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./pages/content.html">Movies</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-1 col-md-12 row" id="seccionContenidos"> <!--Seccion contenidos-->
-                <h2 class="contenido-disponible">Nuestro contenido disponible</h2>
+            <div class="col-xs-12 welcome-section"> <!--Sección Bienvenida-->
+                <div>
+                    <h2>¡Welcome to Streaming House!</h2>
+                    <img src="./img/home-cinema.svg" alt="">
+                </div>
             </div>
 
-            <div class="col-md-6"> <!--Seccion Formulario-->
-                <div class="card container">
+            <div class="btnPlay"> <!--Botón redireccionador-->
+                <a href="./pages/content.html" class="btn btn-lg">Enjoy our content here!</a>
+            </div>
+
+            <div class="col-md-6"> <!--Sección Formulario-->
+                <div class="card container cardForm">
                     <div class="card-body">
-                        <h2 class="tituloBusqueda">Anotador: ¿Que deseás ver?</h2>
-                        <form id="busquedaForm">
+                        <h2 class="titleSearch">Annotator: What do you want to see?</h2>
+                        <form id="searchForm">
                             <div class="formField">
-                                <label for="contenidoTitulo">Titulo: </label>
-                                <input id="contenidoTitulo" name="contenidoTitulo" placeholder="Star Wars, Los Simpsons...">
+                                <label for="contentTitle">Title: </label>
+                                <input id="contentTitle" name="contentTitle" placeholder="Star Wars, The Simpsons...">
                             </div>
                             <div class="formField">
-                                <label for="contenidoGenero">Genero: </label>
-                                <input id="contenidoGenero" name="contenidoGenero" placeholder="Ciencia Ficción, Humor...">
+                                <label for="contentGenre">Genre: </label>
+                                <input id="contentGenre" name="contentGenre" placeholder="Action, Comedy...">
                             </div>
                             <div class="formField">
-                                <label for="contenidoTipo">Tipo: </label>
-                                <input id="contenidoTipo" name="contenidoTipo" placeholder="Película, Serie...">
+                                <label for="contentTipe">Tipe: </label>
+                                <input id="contentTipe" name="contentTipe" placeholder="Movie, Serie...">
                             </div>
                             <div class="formField">
-                                <button class="btn btn-outline-secondary btnGuardar" id="botonGuardar">Guardar</button>
+                                <button class="btn btnSave" id="btnSave">Save</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6"> <!--Seccion historial-->
-                <div class="container historialTabla">
-                    <h2 class="subtituloTabla">Lista de contenido para ver luego</h2>
-                    <table class="table" id="historialTabla">
+            <div class="col-md-6"> <!--Sección de la lista-->
+                <div class="container listTable">
+                    <h2 class="subtitleTable">List of content to watch later</h2>
+                    <table class="table" id="listTable">
                         <thead>
                             <tr>
-                                <th scope="col">Titulo</th>
-                                <th scope="col">Genero</th>
-                                <th scope="col">Tipo</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Genre</th>
+                                <th scope="col">Tipe</th>
                             </tr>
                         </thead>
                     </table>
