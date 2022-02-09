@@ -29,11 +29,11 @@ $(document).ready(function() { //Cuando el DOM se cargue, se ejecuta la funcion 
 function convertFormDataToSearchObj(searchFormData) { //Funcion para convertir el FormData a un objeto 
     let contentTitle = searchFormData.get("contentTitle");
     let contentGenre = searchFormData.get("contentGenre");
-    let contentTipe = searchFormData.get("contentTipe");
+    let contentType = searchFormData.get("contentType");
     return {
         "contentTitle": contentTitle,
         "contentGenre": contentGenre,
-        "contentTipe": contentTipe
+        "contentType": contentType
     }
 }
 
@@ -49,5 +49,5 @@ function insertColumnInList(searchObj) { //Funcion para agregar las celdas a la 
     newCell.textContent = searchObj["contentGenre"];
 
     newCell = newColumn.insertCell(2);
-    newCell.textContent = searchObj["contentTipe"];
+    newCell.textContent = searchObj["contentType"];
 }
